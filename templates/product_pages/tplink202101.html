@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+    <link rel="stylesheet" href = "{% static 'css/bootstrap.min.css'%}" type='text/css'>
+{% block title %} sản phẩm{% endblock %}
+
+{% block content %}
+    {% for item in object_tplink %}
+        {% if item.code_number == 'tplink202101' %}
+            <div class="container" style="padding-top: 50px;">
+                    <div class="row">
+                        <div class=" col-sm-7">
+                                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="10000">
+                                  <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="10000">
+                                      <img src="{{ item.picture1.url }}" class="d-block w-100" style="height: 320px;" alt="unifi ac lite">
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                      <img src="{{ item.picture2.url}}" class="d-block w-100" style="height: 320px;"  alt="unifi ac lite">
+                                    </div>
+                                  </div>
+                                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                  </button>
+                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                  </button>
+                                </div>
+                        </div>
+                        <div class="col-sm-5">
+                             <h5 class="card-title" style="color: #0a53be" >{{ item.name }}</h5>
+                            <li>Thương hiệu:  <strong>{{ item.brand }}</strong></li>
+                            <li>Phân loại:  <strong>{{ item.classify }}</strong></li>
+                            <li>Mã sản phẩm:  <strong>{{ item.code_number }}</strong></li>
+                            <li>Tình trạng:  <strong>{{ item.status }}</strong> </li>
+                            <li>Giá:  <strong>{{ item.price }}</strong></li>
+                            <a href="http://m.me/103237812169437" target="_blank" class="btn btn-primary">Liên hệ giá tốt và giá sỉ</a>
+                        </div>
+                </div>
+                <div class="container" style="padding-top: 50px">
+                    <div class="card container" >
+                            <nav>
+                              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Thông số kỹ thuật</button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Tài liệu và datasheet</button>
+
+                              </div>
+                            </nav>
+                            <div class="tab-content " id="nav-tabContent" style="padding-top: 30px;">
+                              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{{ item.description |linebreaks  }}</div>
+                              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Đang cập nhật</div>
+                            </div>
+
+                </div>
+            </div>
+        {% endif %}
+     {% endfor %}
+
+{% endblock %}
